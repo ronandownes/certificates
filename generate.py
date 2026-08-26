@@ -57,7 +57,7 @@ def build() -> None:
             thumb_path = THUMBS / thumb_name
             if make_pdf_thumbnail(source, thumb_path):
                 thumb_rel = f"thumbnails/{thumb_name}"
-        elif suffix in {".png", ".jpg", ".jpeg", ".webp"}:
+        else:
             thumb_name = source.name
             shutil.copy2(source, THUMBS / thumb_name)
             thumb_rel = f"thumbnails/{thumb_name}"
@@ -74,21 +74,25 @@ def build() -> None:
     cards = []
     for item in items:
         if item["thumb"]:
-            preview = f'<img src="{html.escape(item["thumb"])}" alt="Preview of {html.escape(item["name"])}" loading="lazy">'
+            preview = (
+                f'<img src="{html.escape(item["thumb"])}" '
+                f'alt="Preview of {html.escape(item["name"])}" loading="lazy">'
+            )
         else:
             preview = '<div class="placeholder">PDF</div>'
+
         cards.append(
-            f'''<article class="card">\n'
-            f'  <a class="preview" href="{html.escape(item["file"])}" target="_blank" rel="noopener">{preview}</a>\n'
-            f'  <div class="body">\n'
-            f'    <h2>{html.escape(item["name"])}</h2>\n'
-            f'    <p>{html.escape(item["kind"])}</p>\n'
-            f'    <div class="actions">\n'
-            f'      <a href="{html.escape(item["file"])}" target="_blank" rel="noopener">View</a>\n'
-            f'      <a href="{html.escape(item["file"])}" download>Download</a>\n'
-            f'    </div>\n'
-            f'  </div>\n'
-            f'</article>'''
+            f'''<article class="card">
+  <a class="preview" href="{html.escape(item["file"])}" target="_blank" rel="noopener">{preview}</a>
+  <div class="body">
+    <h2>{html.escape(item["name"])}</h2>
+    <p>{html.escape(item["kind"])}</p>
+    <div class="actions">
+      <a href="{html.escape(item["file"])}" target="_blank" rel="noopener">View</a>
+      <a href="{html.escape(item["file"])}" download>Download</a>
+    </div>
+  </div>
+</article>'''
         )
 
     empty = "" if items else '<p class="empty">No certificates have been added yet.</p>'
@@ -103,7 +107,7 @@ def build() -> None:
   <style>
     :root {{ color-scheme: light; --ink:#202124; --muted:#686b70; --line:#dadce0; --paper:#ffffff; --wash:#f7f7f5; }}
     * {{ box-sizing:border-box; }}
-    body {{ margin:0; font-family: Georgia, 'Times New Roman', serif; color:var(--ink); background:var(--wash); }}
+    body {{ margin:0; font-family:Georgia,'Times New Roman',serif; color:var(--ink); background:var(--wash); }}
     header {{ max-width:1180px; margin:0 auto; padding:52px 24px 24px; }}
     h1 {{ margin:0 0 8px; font-size:clamp(2.2rem,5vw,4.2rem); font-weight:500; letter-spacing:-.03em; }}
     header p {{ margin:0; color:var(--muted); font-family:Arial,sans-serif; }}
