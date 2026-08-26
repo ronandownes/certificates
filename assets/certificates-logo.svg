@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 64" role="img" aria-labelledby="title desc">
+  <title id="title">Ronan Downes Certificates</title>
+  <desc id="desc">Four coloured dots beside the words Ronan Downes Certificates</desc>
+  <g transform="translate(4 8)">
+    <circle cx="10" cy="10" r="9" fill="#E63329"/>
+    <circle cx="34" cy="10" r="9" fill="#3FAE49"/>
+    <circle cx="10" cy="34" r="9" fill="#2D7DD2"/>
+    <circle cx="34" cy="34" r="9" fill="#1A1A1A"/>
+  </g>
+  <text x="60" y="27" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="700" fill="#202124">Ronan Downes</text>
+  <text x="60" y="47" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="500" fill="#5f6368">Certificates</text>
+</svg>
